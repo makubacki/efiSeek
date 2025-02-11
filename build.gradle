@@ -44,7 +44,10 @@ configurations {
 
 dependencies {
     toCopy 'org.json:json:20200518'
-    implementation configurations.toCopy
+}
+
+configurations {
+    implementation.extendsFrom(toCopy)
 }
 
 task copyToLib(type: Copy) {
