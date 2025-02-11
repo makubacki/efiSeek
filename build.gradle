@@ -60,4 +60,6 @@ java {
     targetCompatibility = "21"
 }
 
-processResources.dependsOn copyToLib
+processResources.dependsOn(copyToLib)
+copyDependencies.dependsOn(copyToLib)
+compileJava.dependsOn(copyToLib)
