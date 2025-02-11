@@ -1,9 +1,9 @@
 // Builds a Ghidra Extension for a given Ghidra installation.
 //
-// An absolute path to the Ghidra installation directory must be supplied either by setting the 
+// An absolute path to the Ghidra installation directory must be supplied either by setting the
 // GHIDRA_INSTALL_DIR environment variable or Gradle project property:
 //
-//     > export GHIDRA_INSTALL_DIR=<Absolute path to Ghidra> 
+//     > export GHIDRA_INSTALL_DIR=<Absolute path to Ghidra>
 //     > gradle
 //
 //         or
@@ -43,13 +43,18 @@ configurations {
 }
 
 dependencies {
-    toCopy 'org.json:json:20200518'      
-    implementation configurations.toCopy    
+    toCopy 'org.json:json:20200518'
+    implementation configurations.toCopy
 }
 
 task copyToLib(type: Copy) {
-    from configurations.toCopy 
+    from configurations.toCopy
     into 'lib'
+}
+
+java {
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
 }
 
 processResources.dependsOn copyToLib
